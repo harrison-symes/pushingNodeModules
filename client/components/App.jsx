@@ -1,10 +1,13 @@
 import React from 'react'
+import AddCat from './AddCat'
 
 const App = () => {
   return (
-    <h1>React development has begun!</h1>
+    <div>
+      <h1>CAT development has begun!</h1>
+      <AddCat />
+    </div>
   )
 }
 
 export default App
-
