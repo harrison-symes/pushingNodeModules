@@ -6,27 +6,33 @@ export default class AddCat extends React.Component {
     this.state = {
       newCat: {}
     }
-    this.updateInputDetails = this.updateInputDetails.bind(this)
     this.submitCat = this.submitCat.bind(this)
+    this.updateNewCatDetails = this.updateNewCatDetails.bind(this)
   }
-  updateInputDetails(e) {
+  updateNewCatDetails(e) {
     let newCat = this.state.newCat
     newCat[e.target.name] = e.target.value
-    this.setState({newCat})
-    console.log(this.state);
+    //do something
+    this.setState({newCat: newCat})
   }
   submitCat(e) {
     e.preventDefault()
-    //stand in until we learn about API's
-    console.log(this.state.newCat);
+    console.log({e});
+    console.log("the cat is", this.state.newCat);
   }
   render() {
     return (
       <form onSubmit={this.submitCat}>
-        <input type="text" name="name" placeholder="name" onChange={this.updateInputDetails} />
-        <input type="text" name="breed" placeholder="breed" onChange={this.updateInputDetails} />
-        <input type="text" name="owner" placeholder="owner" onChange={this.updateInputDetails} />
-        <input type="submit" value="Create Cat"/>
+        <input name="name" placeholder="name" type="text" onChange={(e) => this.updateNewCatDetails(e)}/>
+        <input name="age" placeholder="age" type="text" onChange={(e) => this.updateNewCatDetails(e)}/>
+        <input name="colour" placeholder="colour" type="text" onChange={(e) => this.updateNewCatDetails(e)}/>
+        <select name="isAlive" onChange={(e) => this.updateNewCatDetails(e)}>
+          <option selected disabled>Does this exist?</option>
+          <option value={true}>Ye</option>
+          <option value={false}>Neh</option>
+        </select>
+        <input type="submit" />
+        <p>{this.state.newCat.name}</p>
       </form>
     )
   }
